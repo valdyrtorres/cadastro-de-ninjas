@@ -25,6 +25,7 @@ public class NinjaController {
         return "Essa é minha primeira mensagem nessa rota";
     }
 
+    // Adicionar ninja (CREATE)
     @PostMapping("/criar")
     @Operation(summary = "Cria um novo ninja", description = "Rota cria um novo ninja e insere no banco de dados")
     @ApiResponses(value = {
@@ -37,12 +38,14 @@ public class NinjaController {
             .body("Ninja criado com sucesso: " + novoNinja.getNome() + " (ID): " + novoNinja.getId());
     }
 
+    // Mostrar todos os ninjas (READ)
     @GetMapping("/listar")
     public ResponseEntity<List<NinjaDTO>>  listarNinjas() {
        List<NinjaDTO> ninjas =  ninjaService.listarNinjas();
        return ResponseEntity.ok(ninjas);
     }
 
+    // Procurar Ninja por id (READ)
     @GetMapping("/listar/{id}")
     @Operation(summary = "Lista o ninja por Id", description = "Rota lista um ninja pelo seu id")
     @ApiResponses(value = {
@@ -59,6 +62,7 @@ public class NinjaController {
        }
     }
 
+    // Alterar dados dos ninjas (UPDATE)
     @PutMapping("/alterar/{id}")
     @Operation(summary = "Altera o ninja por Id", description = "Rota altera um ninja pelo seu id")
     @ApiResponses(value = {
@@ -80,6 +84,7 @@ public class NinjaController {
         }
     }
 
+    // Deletar Ninja (DELETE)
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletarNinjaPorId(@PathVariable Long id) {
         if (ninjaService.listarNinjasPorId(id) != null) {
