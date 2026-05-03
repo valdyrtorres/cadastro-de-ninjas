@@ -18,3 +18,9 @@ java -DDATABASE_URL=jdbc:postgresql://localhost:5432/meubanco -jar target/app.ja
 ou
 $env:DATABASE_URL="jdbc:postgresql://localhost:5432/meubanco"
 e rode o mvn em seguida
+
+** Interface gráfica
+http://localhost:8080/ninjas/ui/listar
+
+swagger
+http://localhost:8080/swagger-ui/index.html
